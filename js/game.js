@@ -33,6 +33,7 @@ class Game{
 
 
   update(){
+    this.paddle.update();
     this.ball.update();
     this.checkHit();
   };

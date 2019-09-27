@@ -9,18 +9,28 @@ class Paddle{
     this.height=20;
     this.width=80;
     this.color="green";
-    this.speed=15;
+    this.max_speed=10;
+    this.speed=0;
   }
 
   moveRight(){
-    if((this.position.x+this.width)<this.GAME_WIDTH){
-      this.position.x+=this.speed;
-    }
+    this.speed=this.max_speed;
   }
 
   moveLeft(){
-    if(this.position.x>0){
-      this.position.x-=this.speed;
+    this.speed=-this.max_speed;
+  }
+
+  stop(){
+    this.speed=0;
+  }
+
+  update(){
+    this.position.x+=this.speed;
+    if(this.position.x<0){
+      this.position.x=0;
+    }else if(this.position.x+this.width>this.GAME_WIDTH){
+      this.position.x=this.GAME_WIDTH-this.width;
     }
   }
 
