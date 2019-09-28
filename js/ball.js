@@ -6,13 +6,24 @@ class Ball{
     }
     this.speed={
       x:5,
-      y:5
+      y:-5
     }
     this.paddle=paddle;
     this.GAME_WIDTH=game.GAME_WIDTH;
     this.GAME_HEIGHT=game.GAME_HEIGHT;
     this.size=10;
     this.color="blue";
+  }
+
+  resetPosition(){
+    this.position={
+      x:250,
+      y:300
+    }
+    this.speed={
+      x:5,
+      y:-5
+    }
   }
 
   collide(){

@@ -8,7 +8,7 @@ class Paddle{
     }
     this.height=20;
     this.width=80;
-    this.color="green";
+    this.color="#ffda24d9";
     this.max_speed=10;
     this.speed=0;
   }
@@ -19,6 +19,13 @@ class Paddle{
 
   moveLeft(){
     this.speed=-this.max_speed;
+  }
+
+  resetPosition(){
+    this.position={
+      x:150,
+      y:560
+    }
   }
 
   stop(){

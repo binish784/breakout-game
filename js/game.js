@@ -5,14 +5,22 @@ class Game{
       this.ctx=context;
       this.bricks=[];
       this.ball=undefined;
+      this.currentLevel=2;
+      this.paddle=new Paddle(this);
+      this.ball=new Ball(this,this.paddle);
+      this.level=new Level();
+      this.levels=this.level.getLevels();
+    }
+
+  reset(){
+    this.paddle.resetPosition();
+    this.ball.resetPosition();
   }
 
   start(){
-    this.paddle=new Paddle(this);
-    this.ball=new Ball(this,this.paddle);
+    this.reset();
     this.bricks=[];
-    this.level=new Level();
-    this.bricks=this.level.buildLevel();
+    this.bricks=this.level.buildLevel(this.currentLevel);
   }
 
   checkHit(){
@@ -21,13 +29,26 @@ class Game{
         this.ball.position.y+this.ball.size>block.position.y &&
         this.ball.position.x<=block.position.x+block.width &&
         this.ball.position.x+this.ball.size>=block.position.x){
-          block.hit=true;
+          if(block.doubleHit){
+            block.doubleHit=false;
+          }else{
+            block.hit=true;
+          }
           this.ball.speed.y=-this.ball.speed.y;
         }
     }.bind(this))
     this.bricks=this.bricks.filter(function(block){
       return !block.hit;
     }.bind(this));
+    if(this.bricks.length==0){
+      if(this.currentLevel+1<this.levels.length){
+        this.currentLevel++;
+      }else{
+        this.currentLevel=0;
+      }
+      console.log(this.currentLevel);
+      this.start();
+    }
   }
 
 
