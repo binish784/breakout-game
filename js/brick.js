@@ -8,7 +8,7 @@ class Brick{
       x:x,
       y:y
     }
-    this.doubleHit=(randomNumber(0,10)<8) ? false : true;
+    this.doubleHit=(randomNumber(0,10)<9) ? false : true;
     this.hit=false;
   }
 

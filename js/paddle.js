@@ -2,15 +2,15 @@ class Paddle{
   constructor(game){
     this.GAME_WIDTH=game.GAME_WIDTH;
     this.GAME_HEIGHT=game.GAME_HEIGHT;
-    this.position={
-      x:150,
-      y:560
-    }
     this.height=20;
     this.width=80;
-    this.color="#ffda24d9";
-    this.max_speed=10;
+    this.color="#ffda24";
+    this.max_speed=15;
     this.speed=0;
+    this.position={
+      x:this.GAME_WIDTH/2-this.width/2,
+      y:560
+    }
   }
 
   moveRight(){
@@ -23,7 +23,7 @@ class Paddle{
 
   resetPosition(){
     this.position={
-      x:150,
+      x:this.GAME_WIDTH/2-this.width/2,
       y:560
     }
   }

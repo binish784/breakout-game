@@ -9,7 +9,7 @@ let game = new Game(context,GAME_HEIGHT,GAME_WIDTH);
 
 game.start();
 
-let controller= new Controller(game.paddle);
+let controller= new Controller(game);
 
 function update(){
     game.update();
